@@ -45,6 +45,13 @@ const Login = styled.div`
 
 `;
 
+const Title = styled.h2`
+    font-size: 14px;
+    font-weight: 500;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+`;
+
 const Button = styled.button`
     padding: 5px 15px;
     background: transparent;
@@ -79,6 +86,7 @@ export default function Menu({setDarkMode, darkMode}) {
                 <Button><AccountCircleOutlined />SIGN IN</Button>
             </Login>
             <Hr />
+            <Title>BEST OF LANGUAGE</Title>
             <Item><LibraryMusicOutlined />Music</Item>
             <Item><SportsBasketballOutlined />Sports</Item>
             <Item><SportsEsportsOutlined />Gaming</Item>

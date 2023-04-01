@@ -10,7 +10,7 @@ const Container = styled.div`
 
 const Main = styled.div`
   flex:7;
-  background: #181818;
+  background: ${({theme})=>theme.bg};
 `;
 const Wrapper = styled.div`
 `;
