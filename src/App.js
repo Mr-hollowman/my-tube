@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
+import { LightTheme, DarkTheme } from "./utils/Theme";
+import { useState } from "react";
 
 const Container = styled.div`
  display:flex;
@@ -8,21 +10,25 @@ const Container = styled.div`
 
 const Main = styled.div`
   flex:7;
+  background: #181818;
 `;
 const Wrapper = styled.div`
 `;
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true)
   return (
+    <ThemeProvider theme={darkMode ? DarkTheme: LightTheme }>
     <Container>
-      <Menu />
+      <Menu setDarkMode={setDarkMode} darkMode={darkMode} />
       <Main>
         <Navbar />
         <Wrapper>
-          video cards
+          jnjnjknk
         </Wrapper>
       </Main>
     </Container>
+    </ThemeProvider>
   );
 }
 
