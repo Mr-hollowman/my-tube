@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import MyTube from '../img/logo.png';
 import { AccountCircleOutlined, ArticleOutlined, ExploreOffOutlined, FlagOutlined, HelpOutlineOutlined, HistoryOutlined, Home, LibraryMusicOutlined, LiveTvOutlined, MovieOutlined, SettingsBrightnessOutlined, SettingsOutlined, SportsBasketballOutlined, SportsEsportsOutlined, SubscriptionsOutlined, VideoLibraryOutlined,  } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     flex:1;
-    background:${({theme})=>theme.bg};
+    background:${({theme})=>theme.bgLighter};
     height:100vh;
     color:${({theme})=>theme.text};
     font-size: 14px;
@@ -34,6 +35,10 @@ const Item = styled.div`
     align-items: center;
     gap: 20px;
     padding: 7.5px 0px;
+
+    &:hover{
+        background: ${({theme})=>theme.soft}
+    }
 `;
 
 const Hr = styled.hr`
@@ -70,10 +75,12 @@ export default function Menu({setDarkMode, darkMode}) {
   return (
     <Container>
         <Wrapper>
+            <Link to={"/"} style={{textDecoration:'none', color: 'inherit'}}>
             <Logo>
                 <Img src={MyTube} />
                 MyTube
             </Logo>
+            </Link>
             <Item><Home />Home</Item>
             <Item><ExploreOffOutlined />Explore</Item>
             <Item><SubscriptionsOutlined />Subscriptions</Item>
