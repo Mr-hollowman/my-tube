@@ -35,6 +35,10 @@ const Item = styled.div`
     align-items: center;
     gap: 20px;
     padding: 7.5px 0px;
+
+    &:hover{
+        background: ${({theme})=>theme.soft}
+    }
 `;
 
 const Hr = styled.hr`
