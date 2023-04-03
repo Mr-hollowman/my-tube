@@ -1,6 +1,7 @@
 import { AddTaskOutlined, ReplyOutlined, ThumbDownOutlined, ThumbUpOutlined } from "@mui/icons-material";
 import styled from "styled-components"
 import { Comments } from "../components/Comments";
+import Card from "../components/Card";
 
 const Container = styled.div`
   display: flex;
@@ -152,7 +153,20 @@ export default function Video() {
         <Hr />
         <Comments />
       </Content>
-      <Recommendation>Recommendation</Recommendation>
+      <Recommendation>
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+      </Recommendation>
     </Container>
   )
 }
