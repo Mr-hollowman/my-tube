@@ -8,6 +8,7 @@ const Container = styled.div`
   justify-content: center;
   height: calc(100vh - 56px);
   color: ${({ theme }) => theme.text};
+  overflowY: "hidden"; 
 `;
 
 const Wrapper = styled.div`

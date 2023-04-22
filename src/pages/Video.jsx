@@ -110,7 +110,7 @@ export default function Video() {
         <VideoWrapper>
           <iframe
             width={'100%'}
-            height={'720'}
+            height={'420'}
             src="https://www.youtube.com/embed/k3Vfj-e1Ma4"
             title="Youtube video player"
             frameBorder={0}

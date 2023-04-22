@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 const Container = styled.div`
-  width:  ${(props)=>props.type !== "sm" && "360px"};
+  width:  ${(props)=>props.type !== "sm" && "300px"};
   margin-bottom:  ${(props)=>props.type === "sm" ? "10px" :"45px"};
   cursor: pointer;
   display: ${(props)=>props.type === "sm" && "flex"};
