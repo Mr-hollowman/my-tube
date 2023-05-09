@@ -52,17 +52,17 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-export default function Card({type}) {
+export default function Card({type, video}) {
   return (
     <Link to={"/video/test"} style={{textDecoration:'none'}}>
       <Container type={type}>
-        <Image type={type} src={"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.VwnCdshko-tWWvLg64cPqgHaEK%26pid%3DApi&f=1&ipt=df64562edea8e56f470ed7c9b2f6441ea6060f023b5641dce75c79d0498faf4c&ipo=images"} />
+        <Image type={type} src={video.imgUrl} />
         <Details>
           <ChannelImage type={type} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.VwnCdshko-tWWvLg64cPqgHaEK%26pid%3DApi&f=1&ipt=df64562edea8e56f470ed7c9b2f6441ea6060f023b5641dce75c79d0498faf4c&ipo=images" />
           <Texts>
-            <Title>Test video</Title>
+            <Title>{video.title}</Title>
           <ChannelName>Mr.Hollowman</ChannelName>
-            <Info>1cr views . 1 day ago</Info>
+            <Info>{video.views} views . 1 day ago</Info>
           </Texts>
         </Details>
       </Container>

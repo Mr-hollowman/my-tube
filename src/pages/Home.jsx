@@ -22,5 +22,5 @@ export default function Home({type}) {
   useEffect(() => {
     getData();
   }, [type]);
-  return <Container>{videos && videos.map((video) => <Card />)}</Container>;
+  return <Container>{videos && videos.map((video) => <Card key={video._id} video={video} />)}</Container>;
 }
