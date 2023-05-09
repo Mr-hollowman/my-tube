@@ -1,5 +1,22 @@
-import { AccountCircleOutlined, ArticleOutlined, ExploreOffOutlined, FlagOutlined, HelpOutlineOutlined, HistoryOutlined, Home, LibraryMusicOutlined, LiveTvOutlined, MovieOutlined, SettingsBrightnessOutlined, SettingsOutlined, SportsBasketballOutlined, SportsEsportsOutlined, SubscriptionsOutlined, VideoLibraryOutlined,  } from '@mui/icons-material';
-import MyTube from '../img/logo.png';
+import {
+  AccountCircleOutlined,
+  ArticleOutlined,
+  ExploreOffOutlined,
+  FlagOutlined,
+  HelpOutlineOutlined,
+  HistoryOutlined,
+  Home,
+  LibraryMusicOutlined,
+  LiveTvOutlined,
+  MovieOutlined,
+  SettingsBrightnessOutlined,
+  SettingsOutlined,
+  SportsBasketballOutlined,
+  SportsEsportsOutlined,
+  SubscriptionsOutlined,
+  VideoLibraryOutlined,
+} from "@mui/icons-material";
+import MyTube from "../img/logo.png";
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -79,14 +96,18 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <Home />
           Home
         </Item>
-        <Item>
-          <ExploreOffOutlined />
-          Explore
-        </Item>
-        <Item>
-          <SubscriptionsOutlined />
-          Subscriptions
-        </Item>
+        <Link to="trends" style={{ textDecoration: "none", color:"inherit" }} >
+          <Item>
+            <ExploreOffOutlined />
+            Explore
+          </Item>
+        </Link>
+        <Link to="subscriptions" style={{ textDecoration: "none", color:"inherit" }} >
+          <Item>
+            <SubscriptionsOutlined />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryOutlined />
@@ -99,7 +120,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Link to="signin" style={{textDecoration:"none"}}>
+          <Link to="signin" style={{ textDecoration: "none" }}>
             <Button>
               <AccountCircleOutlined />
               SIGN IN
