@@ -12,7 +12,6 @@ const Container = styled.div`
 
 export default function Home({type}) {
   const [videos, setVideos] = useState([]);
-  console.log(videos,"videos");
 
   const getData = async () => {
     await axios.get(`/videos/${type}`).then((res) => {
