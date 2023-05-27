@@ -1,24 +1,27 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components"
+import styled from "styled-components";
+import { format } from "timeago.js";
 
 const Container = styled.div`
-  width:  ${(props)=>props.type !== "sm" && "300px"};
-  margin-bottom:  ${(props)=>props.type === "sm" ? "10px" :"45px"};
+  width: ${(props) => props.type !== "sm" && "300px"};
+  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
-  display: ${(props)=>props.type === "sm" && "flex"};
-  gap: 10px
+  display: ${(props) => props.type === "sm" && "flex"};
+  gap: 10px;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height:  ${(props)=>props.type === "sm" ? "120px" : "202px"};
+  height: ${(props) => (props.type === "sm" ? "120px" : "202px")};
   background: #999;
   flex: 1;
 `;
 
 const Details = styled.div`
   display: flex;
-  margin-top:  ${(props)=>props.type === "sm" && "16px"};
+  margin-top: ${(props) => props.type === "sm" && "16px"};
   gap: 12px;
   flex: 1;
 `;
@@ -28,17 +31,15 @@ const ChannelImage = styled.img`
   height: 36px;
   border-radius: 50%;
   background: #999;
-  display: ${(props)=>props.type === "sm" && "none"}
+  display: ${(props) => props.type === "sm" && "none"};
 `;
 
-const Texts = styled.div`
-
-`;
+const Texts = styled.div``;
 
 const Title = styled.h1`
   font-size: 16px;
   font-weight: 500;
-  color: ${({ theme }) => theme.text}
+  color: ${({ theme }) => theme.text};
 `;
 
 const ChannelName = styled.h2`
@@ -52,20 +53,36 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-export default function Card({type}) {
+export default function Card({ type, video }) {
+  const [channel, setChannel] = useState({});
+  console.log('channel', channel)
+
+  const getChannel = async () => {
+    await axios.get(`/users/find/${video.userId}`).then((res) => {
+      setChannel(res.data);
+    });
+  };
+  useEffect(() => {
+    getChannel();
+  }, [video.userId]);
   return (
-    <Link to={"/video/test"} style={{textDecoration:'none'}}>
+    <Link to={"/video/test"} style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} src={"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.VwnCdshko-tWWvLg64cPqgHaEK%26pid%3DApi&f=1&ipt=df64562edea8e56f470ed7c9b2f6441ea6060f023b5641dce75c79d0498faf4c&ipo=images"} />
+        <Image type={type} src={video.imgUrl} />
         <Details>
-          <ChannelImage type={type} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.VwnCdshko-tWWvLg64cPqgHaEK%26pid%3DApi&f=1&ipt=df64562edea8e56f470ed7c9b2f6441ea6060f023b5641dce75c79d0498faf4c&ipo=images" />
+          <ChannelImage
+            type={type}
+            src={channel.img}
+          />
           <Texts>
-            <Title>Test video</Title>
-          <ChannelName>Mr.Hollowman</ChannelName>
-            <Info>1cr views . 1 day ago</Info>
+            <Title>{video.title}</Title>
+            <ChannelName>{channel.name}</ChannelName>
+            <Info>
+              {video.views} views . {format(video.createdAt)}
+            </Info>
           </Texts>
         </Details>
       </Container>
     </Link>
-  )
+  );
 }
