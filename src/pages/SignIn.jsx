@@ -1,5 +1,7 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   height: calc(100vh - 56px);
   color: ${({ theme }) => theme.text};
-  overflowY: "hidden"; 
+  overflowy: "hidden";
 `;
 
 const Wrapper = styled.div`
@@ -65,18 +67,40 @@ const Link = styled.span`
 `;
 
 const SignIn = () => {
+  const [userDetails, setUserDetails] = useState({});
+  const handleChange = (e) => {
+    setUserDetails((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    try {
+      axios.post("/auth/signin", { ...userDetails }).then((res) => {
+        console.log('res.data', res.data)
+      });
+    } catch (error) {}
+  };
   return (
     <Container>
       <Wrapper>
         <Title>Sign in</Title>
         <SubTitle>to continue to MyTube</SubTitle>
-        <Input placeholder="username" />
-        <Input type="password" placeholder="password" />
-        <Button>Sign in</Button>
+        <Input placeholder="username" name="name" onChange={handleChange} />
+        <Input
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+        />
+        <Button onClick={handleLogin}>Sign in</Button>
         <Title>or</Title>
-        <Input placeholder="username" />
-        <Input placeholder="email" />
-        <Input type="password" placeholder="password" />
+        <Input placeholder="username" name="name" onChange={handleChange} />
+        <Input placeholder="email" name="email" onChange={handleChange} />
+        <Input
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+        />
         <Button>Sign up</Button>
       </Wrapper>
       <More>
